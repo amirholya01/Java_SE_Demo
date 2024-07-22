@@ -24,13 +24,14 @@ public class PhoneBook {
                     String number = scanner.next();
                     names.add(name);
                     numbers.add(number);
+                    System.out.println("Contact added successfully");
                     break;
                 case 2:
                      if (names.isEmpty() || numbers.isEmpty()) {
                          System.out.println("You have not entered any contacts!");
                      }else {
                          for (int i = 0; i < names.size(); i++) {
-                             System.out.println(names.get(i) + " " + numbers.get(i));
+                             System.out.println(i+1 + " . " + names.get(i) + " " + numbers.get(i));
                          }
                      }
                     break;
