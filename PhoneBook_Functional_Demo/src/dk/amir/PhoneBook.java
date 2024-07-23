@@ -17,7 +17,7 @@ public class PhoneBook {
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    addContact();
+                    addContact(scanner);
                     break;
                 case 2:
                     displayAll();
@@ -40,15 +40,15 @@ public class PhoneBook {
         System.out.println("3 - Exit\n");
     }
 
-    private static void addContact(){
-        Scanner scanner = new Scanner(System.in);
+    private static void addContact(Scanner scanner){
+        //Scanner scanner = new Scanner(System.in);
         System.out.println("Enter name:");
         String name = scanner.next();
         System.out.println("Enter number:");
         String number = scanner.next();
         names.add(name);
         numbers.add(number);
-        scanner.close();
+        //scanner.close();
     }
 
     private static void displayAll(){
