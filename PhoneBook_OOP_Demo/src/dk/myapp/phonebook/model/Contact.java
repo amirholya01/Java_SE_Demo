@@ -2,7 +2,7 @@ package dk.myapp.phonebook.model;
 
 public class Contact {
     private String name;
-    private int number;
+    private String number;
 
     public String getName() {
         return name;
@@ -12,12 +12,12 @@ public class Contact {
         this.name = capitalizeFirstLetter(name);
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
