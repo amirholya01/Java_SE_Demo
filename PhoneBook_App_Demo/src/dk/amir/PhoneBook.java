@@ -31,7 +31,7 @@ public class PhoneBook {
                          System.out.println("You have not entered any contacts!");
                      }else {
                          for (int i = 0; i < names.size(); i++) {
-                             System.out.println(i+1 + " . " + names.get(i) + " " + numbers.get(i));
+                             System.out.println(i+1 + " .  " + names.get(i) + " " + numbers.get(i));
                          }
                      }
                     break;
