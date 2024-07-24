@@ -21,7 +21,7 @@ public class PhoneBook {
                     addContact(scanner);
                     break;
                 case 2:
-                    System.out.println("Print");
+                    printAllContacts();
                     break;
                 case 3:
                     System.out.println("Exit");
@@ -67,6 +67,15 @@ public class PhoneBook {
             businessContact.setFax(fax);
             contacts.add(businessContact);
 
+        }
+    }
+    public  static void printAllContacts(){
+        if (contacts.isEmpty()){
+            System.out.println("No contacts found, phonebook is empty.");
+        }else {
+            for (Contact contact : contacts){
+                System.out.println(contact);
+            }
         }
     }
 }
