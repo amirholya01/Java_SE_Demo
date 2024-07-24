@@ -11,7 +11,7 @@ public class BusinessContact extends Contact{
         this.fax = fax;
     }
 
-    public BusinessContact(ContactType type, String name, String number) {
-        super(type, name, number);
+    public BusinessContact(String name, String number) {
+        super(ContactType.BUSINESS, name, number);
     }
 }

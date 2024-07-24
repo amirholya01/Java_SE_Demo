@@ -1,21 +1,24 @@
 package dk.myapp.phonebook.service;
 
+import dk.myapp.phonebook.model.BusinessContact;
 import dk.myapp.phonebook.model.Contact;
+import dk.myapp.phonebook.model.PersonalContact;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PhoneBook {
+    private static ArrayList<Contact> contacts = new ArrayList<>();
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
-            menu();
-            System.out.println("Please enter your choice");
+            printMenu();
+            System.out.println("Please enter your choice:");
             choice = scanner.nextInt();
             switch (choice){
                 case 1:
-                    System.out.println("Add");
+                    addContact(scanner);
                     break;
                 case 2:
                     System.out.println("Print");
@@ -28,11 +31,42 @@ public class PhoneBook {
                     break;
             }
         }while (choice != 3);
+        scanner.close();
     }
-    public static void menu(){
+    public static void printMenu(){
         System.out.println("---Welcome to Phone Book---");
         System.out.println("1. Add Contact");
         System.out.println("2. Print All Contacts");
         System.out.println("3. Exit\n");
+    }
+    public static void addContact(Scanner scanner){
+        System.out.println("--Contact Type:");
+        System.out.println("1-Personal");
+        System.out.println("2-Business");
+        System.out.println("Enter your choice:");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+        if (choice == 1){
+            System.out.println("Enter Contact Name:");
+            String name = scanner.nextLine();
+            System.out.println("Enter Contact Family:");
+            String family = scanner.nextLine();
+            System.out.println("Enter Contact Phone:");
+            String phone = scanner.nextLine();
+            PersonalContact personalContact = new PersonalContact(name, phone);
+            personalContact.setFamily(family);
+            contacts.add(personalContact);
+        }else {
+            System.out.println("Enter Contact Name:");
+            String name = scanner.nextLine();
+            System.out.println("Enter Contact Phone:");
+            String phone = scanner.nextLine();
+            System.out.println("Enter Contact Fax:");
+            String fax = scanner.nextLine();
+            BusinessContact businessContact = new BusinessContact(name, phone);
+            businessContact.setFax(fax);
+            contacts.add(businessContact);
+
+        }
     }
 }
