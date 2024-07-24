@@ -43,7 +43,8 @@ public class Contact {
     public String toString() {
         return "Contact{" +
                 "name='" + name + '\'' +
-                ", number=" + number +
+                ", number='" + number + '\'' +
+                ", type=" + type +
                 '}';
     }
 }
