@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PhoneBook {
-    private static ArrayList<Contact> contacts = new ArrayList<>();
-    public static void main(String[] args) {
+    private  ArrayList<Contact> contacts = new ArrayList<>();
+    public  void run() {
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
@@ -33,13 +33,13 @@ public class PhoneBook {
         }while (choice != 3);
         scanner.close();
     }
-    public static void printMenu(){
+    private   void printMenu(){
         System.out.println("---Welcome to Phone Book---");
         System.out.println("1. Add Contact");
         System.out.println("2. Print All Contacts");
         System.out.println("3. Exit\n");
     }
-    public static void addContact(Scanner scanner){
+    private   void addContact(Scanner scanner){
         System.out.println("--Contact Type:");
         System.out.println("1-Personal");
         System.out.println("2-Business");
@@ -69,7 +69,7 @@ public class PhoneBook {
 
         }
     }
-    public  static void printAllContacts(){
+    private   void printAllContacts(){
         if (contacts.isEmpty()){
             System.out.println("No contacts found, phonebook is empty.");
         }else {
