@@ -3,7 +3,13 @@ package dk.myapp.phonebook.model;
 public class Contact {
     private String name;
     private String number;
-    private  ContactType type;
+    private final ContactType type;
+
+    public Contact(ContactType type, String name, String number) {
+        this.type = type;
+        this.name = name;
+        this.number = number;
+    }
 
     public ContactType getType() {
         return type;
