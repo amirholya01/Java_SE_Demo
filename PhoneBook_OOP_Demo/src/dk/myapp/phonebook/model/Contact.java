@@ -1,6 +1,6 @@
 package dk.myapp.phonebook.model;
 
-public class Contact {
+public abstract class Contact {
     private String name;
     private String number;
     private final ContactType type;
