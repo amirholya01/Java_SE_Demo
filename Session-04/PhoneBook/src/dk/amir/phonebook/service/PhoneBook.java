@@ -31,6 +31,7 @@ public class PhoneBook {
                     break;
             }
         }while (choice != 3);
+        scanner.close();
     }
     private void printMenu(){
         System.out.println("---Welcome to Phone Book---");
