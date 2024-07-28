@@ -7,9 +7,9 @@ public abstract class Contact {
     private String phoneNumber;
     private ContactType type;
 
-    public Contact(String phoneNumber, String name, ContactType type) {
-        this.phoneNumber = phoneNumber;
+    public Contact(String name, String phoneNumber, ContactType type) {
         this.name = name;
+        this.phoneNumber = phoneNumber;
         this.type = type;
     }
 
