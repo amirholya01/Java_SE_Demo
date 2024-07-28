@@ -1,7 +1,10 @@
 package dk.amir.phonebook;
 
+import dk.amir.phonebook.service.PhoneBook;
+
 public class ApplicationRunner {
     public static void main(String[] args) {
-        System.out.println("Hello to Phone Book!");
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.run();
     }
 }
