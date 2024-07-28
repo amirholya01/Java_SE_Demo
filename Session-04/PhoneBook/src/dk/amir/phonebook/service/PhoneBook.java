@@ -7,10 +7,10 @@ import dk.amir.phonebook.model.PersonalContact;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PhoneBook {
+public class PhoneBook implements AutoCloseable{
     private ArrayList<Contact> contacts = new ArrayList<>();
+    Scanner scanner = new Scanner(System.in);
     public void run(){
-        Scanner scanner = new Scanner(System.in);
         int choice;
         do {
             printMenu();
@@ -77,5 +77,10 @@ public class PhoneBook {
                 System.out.println(contact);
             }
         }
+    }
+
+    @Override
+    public void close() {
+        scanner.close();
     }
 }
