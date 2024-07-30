@@ -23,21 +23,22 @@ public class PhoneBook implements AutoCloseable{
                 case 2:
                     printAllContacts();
                     break;
-                case 3:
+                case 0:
                     System.out.println("Exit");
                     break;
                 default:
                     System.out.println("Invalid choice");
                     break;
             }
-        }while (choice != 3);
+        }while (choice != 0);
         scanner.close();
     }
     private void printMenu(){
         System.out.println("---Welcome to Phone Book---");
+        System.out.println("0. Exit");
         System.out.println("1. Add Contact");
         System.out.println("2. Print All Contacts");
-        System.out.println("3. Exit\n");
+        System.out.println();
     }
     private void addContact(){
         System.out.println("--Contact Type:");

@@ -34,7 +34,10 @@ public abstract class Contact {
     }
 
     private String capitalizeFirstLetter(String str){
-        return Character.toUpperCase(str.charAt(0)) + str.substring(1);
+        if(str != null && !str.isEmpty()){
+            return Character.toUpperCase(str.charAt(0)) + str.substring(1);
+        }
+        return str;
     }
 
     @Override

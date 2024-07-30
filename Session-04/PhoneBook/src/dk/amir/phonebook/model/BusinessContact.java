@@ -15,4 +15,5 @@ public class BusinessContact extends Contact{
     public void setFax(String fax) {
         this.fax = fax;
     }
+
 }

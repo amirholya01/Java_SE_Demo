@@ -15,4 +15,5 @@ public class PersonalContact extends Contact{
     public void setFamily(String family) {
         this.family = family;
     }
+
 }
