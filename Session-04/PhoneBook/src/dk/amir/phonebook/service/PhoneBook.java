@@ -18,7 +18,7 @@ public class PhoneBook implements AutoCloseable{
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    addContact(scanner);
+                    addContact();
                     break;
                 case 2:
                     printAllContacts();
@@ -39,7 +39,7 @@ public class PhoneBook implements AutoCloseable{
         System.out.println("2. Print All Contacts");
         System.out.println("3. Exit\n");
     }
-    private void addContact(Scanner scanner){
+    private void addContact(){
         System.out.println("--Contact Type:");
         System.out.println("1-Personal");
         System.out.println("2-Business");
