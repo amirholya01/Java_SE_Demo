@@ -23,6 +23,9 @@ public class PhoneBook implements AutoCloseable{
                 case 2:
                     printAllContacts();
                     break;
+                case 3:
+                    System.out.println("search");
+                    break;
                 case 0:
                     System.out.println("Exit");
                     break;
@@ -38,6 +41,7 @@ public class PhoneBook implements AutoCloseable{
         System.out.println("0. Exit");
         System.out.println("1. Add Contact");
         System.out.println("2. Print All Contacts");
+        System.out.println("3. Search Contact by Name");
         System.out.println();
     }
     private void addContact(){
@@ -48,28 +52,28 @@ public class PhoneBook implements AutoCloseable{
         int choice = scanner.nextInt();
         scanner.nextLine();
         if (choice == 1){
-            System.out.println("Enter Contact Name:");
-            String name = scanner.nextLine();
-            System.out.println("Enter Contact Family:");
-            String family = scanner.nextLine();
-            System.out.println("Enter Contact Phone:");
-            String phone = scanner.nextLine();
+            String name = getUserInput("Enter Contact Name:");
+            String family = getUserInput("Enter Contact Family:");
+            String phone = getUserInput("Enter Contact Phone:");
             PersonalContact personalContact = new PersonalContact(name, phone);
             personalContact.setFamily(family);
             contacts.add(personalContact);
         }else {
-            System.out.println("Enter Contact Name:");
-            String name = scanner.nextLine();
-            System.out.println("Enter Contact Phone:");
-            String phone = scanner.nextLine();
-            System.out.println("Enter Contact Fax:");
-            String fax = scanner.nextLine();
+            String name = getUserInput("Enter Contact Name:");
+            String phone = getUserInput("Enter Contact Phone:");
+            String fax = getUserInput("Enter Contact Fax:");
             BusinessContact businessContact = new BusinessContact(name, phone);
             businessContact.setFax(fax);
             contacts.add(businessContact);
 
         }
     }
+
+    private String getUserInput(String message) {
+        System.out.println(message);
+        return scanner.nextLine();
+    }
+
     private void printAllContacts(){
         if(contacts.isEmpty()){
             System.out.println("No contacts found");
@@ -79,7 +83,7 @@ public class PhoneBook implements AutoCloseable{
             }
         }
     }
-
+ 
     @Override
     public void close() {
         scanner.close();

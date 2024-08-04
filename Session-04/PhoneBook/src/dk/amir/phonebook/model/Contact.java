@@ -13,6 +13,13 @@ public abstract class Contact {
         this.type = type;
     }
 
+    private String capitalizeFirstLetter(String str){
+        if(str != null && !str.isEmpty()){
+            return Character.toUpperCase(str.charAt(0)) + str.substring(1);
+        }
+        return str;
+    }
+
     public ContactType getType() {
         return type;
     }
@@ -33,12 +40,6 @@ public abstract class Contact {
         this.phoneNumber = phoneNumber;
     }
 
-    private String capitalizeFirstLetter(String str){
-        if(str != null && !str.isEmpty()){
-            return Character.toUpperCase(str.charAt(0)) + str.substring(1);
-        }
-        return str;
-    }
 
     @Override
     public String toString() {
