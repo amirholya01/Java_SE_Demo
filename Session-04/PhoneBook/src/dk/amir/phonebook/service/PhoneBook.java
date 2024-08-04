@@ -29,6 +29,10 @@ public class PhoneBook implements AutoCloseable{
                     break;
                 case 4:
                     searchAndPrintContactsByFamily();
+                    break;
+                case 5:
+                    System.out.println("Edit");
+                    break;
                 case 0:
                     System.out.println("Exit");
                     break;
@@ -70,6 +74,7 @@ public class PhoneBook implements AutoCloseable{
         System.out.println("2. Print All Contacts");
         System.out.println("3. Search Contacts by Name");
         System.out.println("4. Search Contacts by Family");
+        System.out.println("5. Edit");
         System.out.println();
     }
     private void addContact(){
