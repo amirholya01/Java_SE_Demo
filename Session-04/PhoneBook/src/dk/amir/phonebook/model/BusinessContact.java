@@ -16,4 +16,11 @@ public class BusinessContact extends Contact{
         this.fax = fax;
     }
 
+    @Override
+    public String toString() {
+        return "BusinessContact{" +
+                super.toString() +
+                ", fax='" + fax + '\'' +
+                '}';
+    }
 }

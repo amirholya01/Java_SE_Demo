@@ -43,10 +43,9 @@ public abstract class Contact {
 
     @Override
     public String toString() {
-        return "Contact{" +
+        return
                 "name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", type=" + type +
-                '}';
+                ", type=" + type ;
     }
 }

@@ -16,4 +16,11 @@ public class PersonalContact extends Contact{
         this.family = family;
     }
 
+    @Override
+    public String toString() {
+        return "PersonalContact{" +
+                super.toString() +
+                ", family='" + family + '\'' +
+                '}';
+    }
 }

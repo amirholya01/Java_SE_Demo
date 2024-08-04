@@ -94,6 +94,7 @@ public class PhoneBook implements AutoCloseable{
                 System.out.println(contact);
             }
         }
+        System.out.println("Not found");
     }
  
     @Override
