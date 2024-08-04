@@ -27,6 +27,8 @@ public class PhoneBook implements AutoCloseable{
                 case 3:
                     searchAndPrintContactsByName();
                     break;
+                case 4:
+                    searchAndPrintContactsByFamily();
                 case 0:
                     System.out.println("Exit");
                     break;
@@ -36,6 +38,9 @@ public class PhoneBook implements AutoCloseable{
             }
         }while (choice != 0);
         scanner.close();
+    }
+
+    private void searchAndPrintContactsByFamily() {
     }
 
     private void searchAndPrintContactsByName() {
@@ -55,6 +60,7 @@ public class PhoneBook implements AutoCloseable{
         System.out.println("1. Add Contact");
         System.out.println("2. Print All Contacts");
         System.out.println("3. Search Contacts by Name");
+        System.out.println("4. Search Contacts by Family");
         System.out.println();
     }
     private void addContact(){
