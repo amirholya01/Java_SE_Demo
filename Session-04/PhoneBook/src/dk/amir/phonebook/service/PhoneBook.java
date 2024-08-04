@@ -5,6 +5,7 @@ import dk.amir.phonebook.model.Contact;
 import dk.amir.phonebook.model.PersonalContact;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PhoneBook implements AutoCloseable{
@@ -37,6 +38,15 @@ public class PhoneBook implements AutoCloseable{
         scanner.close();
     }
 
+    private void searchAndPrintContactsByName() {
+        System.out.println("Enter contact name: ");
+        String name = scanner.next();
+        for (Contact contact : contacts) {
+            if (contact.getName().equalsIgnoreCase(name)) {
+                System.out.println(contact);
+            }
+        }
+    }
 
 
     private void printMenu(){
@@ -86,16 +96,8 @@ public class PhoneBook implements AutoCloseable{
             }
         }
     }
-    private void searchAndPrintContactsByName() {
-        String name = getUserInput("Enter your name: ");
-        scanner.nextLine();
-        for (Contact contact : contacts) {
-            if (contact.getName().equalsIgnoreCase(name)) {
-                System.out.println(contact);
-            }
-        }
-        System.out.println("Not found");
-    }
+
+
  
     @Override
     public void close() {
