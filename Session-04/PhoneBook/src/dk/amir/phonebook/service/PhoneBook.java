@@ -41,6 +41,15 @@ public class PhoneBook implements AutoCloseable{
     }
 
     private void searchAndPrintContactsByFamily() {
+        System.out.println("Enter family name: ");
+        String familyName = scanner.next();
+        for (Contact contact : contacts) {
+            if (contact instanceof PersonalContact personalContact) {
+                if (personalContact.getFamily().equals(familyName)) {
+                    System.out.println(contact);
+                }
+            }
+        }
     }
 
     private void searchAndPrintContactsByName() {
