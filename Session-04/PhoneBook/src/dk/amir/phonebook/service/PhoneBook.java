@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PhoneBook implements AutoCloseable{
-    private ArrayList<Contact> contacts = new ArrayList<>();
+    ArrayList<Contact> contacts = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     public void run(){
         int choice;
@@ -24,7 +24,7 @@ public class PhoneBook implements AutoCloseable{
                     printAllContacts();
                     break;
                 case 3:
-                    System.out.println("search");
+                    searchAndPrintContactsByName();
                     break;
                 case 0:
                     System.out.println("Exit");
@@ -36,12 +36,15 @@ public class PhoneBook implements AutoCloseable{
         }while (choice != 0);
         scanner.close();
     }
+
+
+
     private void printMenu(){
         System.out.println("---Welcome to Phone Book---");
         System.out.println("0. Exit");
         System.out.println("1. Add Contact");
         System.out.println("2. Print All Contacts");
-        System.out.println("3. Search Contact by Name");
+        System.out.println("3. Search Contacts by Name");
         System.out.println();
     }
     private void addContact(){
@@ -79,6 +82,15 @@ public class PhoneBook implements AutoCloseable{
             System.out.println("No contacts found");
         }else {
             for (Contact contact : contacts) {
+                System.out.println(contact);
+            }
+        }
+    }
+    private void searchAndPrintContactsByName() {
+        String name = getUserInput("Enter your name: ");
+        scanner.nextLine();
+        for (Contact contact : contacts) {
+            if (contact.getName().equalsIgnoreCase(name)) {
                 System.out.println(contact);
             }
         }
