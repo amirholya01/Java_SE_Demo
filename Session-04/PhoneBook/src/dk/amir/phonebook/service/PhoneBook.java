@@ -5,6 +5,7 @@ import dk.amir.phonebook.model.Contact;
 import dk.amir.phonebook.model.PersonalContact;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PhoneBook implements AutoCloseable{
@@ -32,15 +33,32 @@ public class PhoneBook implements AutoCloseable{
                 case 5:
                     editContactByName();
                     break;
+                case 6:
+                    deleteContactsByName();
+                    break;
                 case 0:
                     System.out.println("Exit");
                     break;
                 default:
                     System.out.println("Invalid choice");
-                    break;
             }
         }while (choice != 0);
         scanner.close();
+    }
+
+    private void deleteContactsByName() {
+        List<Contact> contactsToDelete = new ArrayList<>();
+        System.out.println("Please enter your contact name: ");
+        String name = scanner.next();
+        scanner.nextLine();
+        for (Contact contact : contacts) {
+            if (contact.getName().equalsIgnoreCase(name)) {
+                contactsToDelete.add(contact);
+            }
+        }
+        if(!contactsToDelete.isEmpty()){
+            contacts.removeAll(contactsToDelete);
+        }
     }
 
     private void editContactByName() {
@@ -98,6 +116,7 @@ public class PhoneBook implements AutoCloseable{
         System.out.println("3. Search Contacts by Name");
         System.out.println("4. Search Contacts by Family");
         System.out.println("5. Edit Contact by Name");
+        System.out.println("6. Delete Contacts by Name");
         System.out.println();
     }
     private void addContact(){
