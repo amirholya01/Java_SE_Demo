@@ -5,7 +5,6 @@ import dk.amir.phonebook.model.Contact;
 import dk.amir.phonebook.model.PersonalContact;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class PhoneBook implements AutoCloseable{
@@ -31,7 +30,7 @@ public class PhoneBook implements AutoCloseable{
                     searchAndPrintContactsByFamily();
                     break;
                 case 5:
-                    System.out.println("Edit");
+                    editContactByName();
                     break;
                 case 0:
                     System.out.println("Exit");
@@ -42,6 +41,30 @@ public class PhoneBook implements AutoCloseable{
             }
         }while (choice != 0);
         scanner.close();
+    }
+
+    private void editContactByName() {
+        System.out.println("Please enter your contact name: ");
+        String name = scanner.next();
+        scanner.nextLine();
+        for (Contact contact : contacts) {
+            if (contact.getName().equalsIgnoreCase(name)) {
+                System.out.println(contact);
+                String newNumber = getUserInput("Please enter your new contact number: ");
+                contact.setPhoneNumber(newNumber);
+                if(contact instanceof PersonalContact personalContact){
+                    String newName = getUserInput("Please enter your new name: ");
+                    personalContact.setName(newName);
+                    String newFamilyName = getUserInput("Please enter your new family name: ");
+                    personalContact.setFamily(newFamilyName);
+                }else if(contact instanceof BusinessContact businessContact){
+                    String newCompanyName = getUserInput("Please enter your new contact name: ");
+                    businessContact.setFax(newCompanyName);
+                    String newFax = getUserInput("Please enter your new fax number: ");
+                    businessContact.setFax(newFax);
+                }
+            }
+        }
     }
 
     private void searchAndPrintContactsByFamily() {
@@ -74,7 +97,7 @@ public class PhoneBook implements AutoCloseable{
         System.out.println("2. Print All Contacts");
         System.out.println("3. Search Contacts by Name");
         System.out.println("4. Search Contacts by Family");
-        System.out.println("5. Edit");
+        System.out.println("5. Edit Contact by Name");
         System.out.println();
     }
     private void addContact(){
