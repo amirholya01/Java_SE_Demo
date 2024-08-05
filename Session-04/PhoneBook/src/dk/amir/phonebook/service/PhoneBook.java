@@ -88,23 +88,19 @@ public class PhoneBook implements AutoCloseable{
     private void searchAndPrintContactsByFamily() {
         System.out.println("Enter family name: ");
         String familyName = scanner.next();
-        for (Contact contact : contacts) {
-            if (contact instanceof PersonalContact personalContact) {
-                if (personalContact.getFamily().equals(familyName)) {
-                    System.out.println(contact);
-                }
-            }
-        }
+        contacts.stream()
+                .filter(contact -> contact instanceof PersonalContact)
+                .map(contact -> (PersonalContact) contact)
+                .filter(personalContact -> personalContact.getFamily().equalsIgnoreCase(familyName))
+                .forEach(System.out::println);
     }
 
     private void searchAndPrintContactsByName() {
         System.out.println("Enter contact name: ");
         String name = scanner.next();
-        for (Contact contact : contacts) {
-            if (contact.getName().equalsIgnoreCase(name)) {
-                System.out.println(contact);
-            }
-        }
+        contacts.stream()
+                .filter(contact -> contact.getName().equalsIgnoreCase(name))
+                .forEach(System.out::println);
     }
 
 
