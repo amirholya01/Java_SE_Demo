@@ -1,7 +1,11 @@
 package dk.customerSystem;
 
+import dk.customerSystem.service.CustomerSystem;
+
 public class ApplicationRunner {
     public static void main(String[] args) {
-        System.out.println("Customer System Application ....");
+        try (CustomerSystem customerSystem = new CustomerSystem()) {
+            customerSystem.run();
+        }
     }
 }
