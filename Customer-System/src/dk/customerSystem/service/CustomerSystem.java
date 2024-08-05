@@ -1,9 +1,16 @@
 package dk.customerSystem.service;
 
+import dk.customerSystem.model.Customer;
+import dk.customerSystem.model.LegalCustomer;
+import dk.customerSystem.model.RealCustomer;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CustomerSystem implements AutoCloseable{
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
+    private List<Customer> customers = new ArrayList<>();
     public void run(){
         int choice;
         do {
@@ -32,9 +39,23 @@ public class CustomerSystem implements AutoCloseable{
         int choice = scanner.nextInt();
         scanner.nextLine();
         if (choice == 1) {
-            System.out.println("Real Customer");
+            String firstName = getUserInput("Please enter first name: ");
+            String lastName = getUserInput("Please enter last name: ");
+            String phoneNumber = getUserInput("Please enter phone number: ");
+            String email = getUserInput("Please enter email: ");
+            String homeAddress = getUserInput("Please enter home address: ");
+            RealCustomer realCustomer = new RealCustomer(firstName, lastName, phoneNumber, email);
+            realCustomer.setHomeAddress(homeAddress);
+            customers.add(realCustomer);
         }else if (choice == 2) {
-            System.out.println("Legal Customer");
+            String firstName = getUserInput("Please enter first name: ");
+            String lastName = getUserInput("Please enter last name: ");
+            String phoneNumber = getUserInput("Please enter phone number: ");
+            String email = getUserInput("Please enter email: ");
+            String companyName = getUserInput("Please enter company name: ");
+            LegalCustomer legalCustomer = new LegalCustomer(firstName, lastName, phoneNumber, email);
+            legalCustomer.setCompanyName(companyName);
+            customers.add(legalCustomer);
         }else
             System.out.println("Invalid choice");
 
@@ -45,6 +66,11 @@ public class CustomerSystem implements AutoCloseable{
         System.out.println("Please choose one of the following options:");
         System.out.println("0. Exit");
         System.out.println("1. Create Customer");
+    }
+
+    private String getUserInput(String message){
+        System.out.println(message);
+        return scanner.nextLine();
     }
     @Override
     public void close()  {
