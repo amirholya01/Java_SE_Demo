@@ -51,14 +51,7 @@ public class PhoneBook implements AutoCloseable{
         System.out.println("Please enter your contact name: ");
         String name = scanner.next();
         scanner.nextLine();
-        for (Contact contact : contacts) {
-            if (contact.getName().equalsIgnoreCase(name)) {
-                contactsToDelete.add(contact);
-            }
-        }
-        if(!contactsToDelete.isEmpty()){
-            contacts.removeAll(contactsToDelete);
-        }
+        contacts.removeIf(contact -> contact.getName().equalsIgnoreCase(name));
     }
 
     private void editContactByName() {
