@@ -28,10 +28,39 @@ public class CustomerSystem implements AutoCloseable{
                 case 2:
                     printAllCustomers();
                     break;
+                case 3:
+                    searchAndPrintCustomersByName();
+                    break;
                 default:
                     System.out.println("Invalid choice");
             }
         }while (choice != 0);
+    }
+
+    private void searchAndPrintCustomersByName() {
+        System.out.println("Please enter your  firstname : ");
+        String firstName = scanner.nextLine();
+        if (!customers.isEmpty()) {
+            boolean anyMatch = customers.stream()
+                    .filter(customer -> customer.getFirstName().equalsIgnoreCase(firstName))
+                    .peek(System.out::println)
+                    .findAny()
+                    .isPresent();
+
+            if (!anyMatch) {
+                System.out.println("The name was not found");
+            }
+        } else {
+            System.out.println("No customers found");
+        }
+//        if (!customers.isEmpty()) {
+//            for (Customer customer : customers) {
+//                if (customer.getFirstName().equalsIgnoreCase(firstName)) {
+//                    System.out.println(customer);
+//                } else
+//                    System.out.println("The name was not found");
+//            }
+//        }else System.out.println("No customers found");
     }
 
     private void printAllCustomers() {
@@ -79,6 +108,7 @@ public class CustomerSystem implements AutoCloseable{
         System.out.println("0. Exit");
         System.out.println("1. Create Customer");
         System.out.println("2. Print All Customers");
+        System.out.println("3. Search And Print Customers By Name");
     }
 
     private String getUserInput(String message){
