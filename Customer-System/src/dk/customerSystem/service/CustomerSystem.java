@@ -7,6 +7,7 @@ import dk.customerSystem.model.RealCustomer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class CustomerSystem implements AutoCloseable{
     private Scanner scanner = new Scanner(System.in);
@@ -31,28 +32,52 @@ public class CustomerSystem implements AutoCloseable{
                 case 3:
                     searchAndPrintCustomersByName();
                     break;
+                case 4:
+                    searchAndPrintCustomersByFamily();
+                    break;
                 default:
                     System.out.println("Invalid choice");
             }
         }while (choice != 0);
     }
 
+    private void searchAndPrintCustomersByFamily() {
+        System.out.println("Please enter family name: ");
+        String familyName = scanner.nextLine();
+
+        if (!customers.isEmpty()){
+            List<Customer> matchingCustomers = customers.stream()
+                    .filter(customer -> customer.getLastName().equalsIgnoreCase(familyName))
+                    .toList();
+
+            if(!matchingCustomers.isEmpty()){
+                matchingCustomers.forEach(System.out::println);
+            }else {
+                System.out.println("Customer not found");
+            }
+
+        }else
+            System.out.println("No Customers found");
+    }
+
     private void searchAndPrintCustomersByName() {
         System.out.println("Please enter your  firstname : ");
         String firstName = scanner.nextLine();
-        if (!customers.isEmpty()) {
-            boolean anyMatch = customers.stream()
-                    .filter(customer -> customer.getFirstName().equalsIgnoreCase(firstName))
-                    .peek(System.out::println)
-                    .findAny()
-                    .isPresent();
 
-            if (!anyMatch) {
-                System.out.println("The name was not found");
+        if (!customers.isEmpty()){
+            List<Customer> matchingCustomers = customers.stream()
+                    .filter(customer -> customer.getFirstName().equalsIgnoreCase(firstName))
+                    .toList();
+
+            if(!matchingCustomers.isEmpty()){
+                matchingCustomers.forEach(System.out::println);
+            }else {
+                System.out.println("Customer not found");
             }
-        } else {
-            System.out.println("No customers found");
-        }
+
+        }else
+            System.out.println("No Customers found");
+
 //        if (!customers.isEmpty()) {
 //            for (Customer customer : customers) {
 //                if (customer.getFirstName().equalsIgnoreCase(firstName)) {
@@ -109,6 +134,7 @@ public class CustomerSystem implements AutoCloseable{
         System.out.println("1. Create Customer");
         System.out.println("2. Print All Customers");
         System.out.println("3. Search And Print Customers By Name");
+        System.out.println("4. Search And Print Customers By Family");
     }
 
     private String getUserInput(String message){
