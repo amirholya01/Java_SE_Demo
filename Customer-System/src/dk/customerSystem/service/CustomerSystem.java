@@ -5,7 +5,23 @@ import java.util.Scanner;
 public class CustomerSystem implements AutoCloseable{
     Scanner scanner = new Scanner(System.in);
     public void run(){
-        printMenu();
+        int choice;
+        do {
+            printMenu();
+            System.out.println("Please enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 0:
+                    System.out.println("Exit Application !!!!");
+                    break;
+                case 1:
+                    System.out.println("Add Customer");
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }while (choice != 0);
     }
 
     private void printMenu(){
