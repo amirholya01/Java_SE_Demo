@@ -25,10 +25,22 @@ public class CustomerSystem implements AutoCloseable{
                 case 1:
                     addNewCustomer();
                     break;
+                case 2:
+                    printAllCustomers();
+                    break;
                 default:
                     System.out.println("Invalid choice");
             }
         }while (choice != 0);
+    }
+
+    private void printAllCustomers() {
+        if(!customers.isEmpty()){
+            for (Customer customer : customers) {
+                System.out.println(customer);
+            }
+        }else
+            System.out.println("No customers found");
     }
 
     private void addNewCustomer() {
@@ -66,6 +78,7 @@ public class CustomerSystem implements AutoCloseable{
         System.out.println("Please choose one of the following options:");
         System.out.println("0. Exit");
         System.out.println("1. Create Customer");
+        System.out.println("2. Print All Customers");
     }
 
     private String getUserInput(String message){
